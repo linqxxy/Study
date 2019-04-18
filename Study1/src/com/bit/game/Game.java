@@ -1,6 +1,5 @@
 package com.bit.game;
-import java.util.Scanner;
-public class Game {
+ public class Game {
     private  Person player;
     private Computer cpu;
     public Game(){
