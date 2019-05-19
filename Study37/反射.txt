@@ -1,0 +1,66 @@
+反射的总结：
+能够分析类能力的程序称为反射，反射机制可以用来
+1.在运行时查看类的能力。
+2.在运行时查看对象。
+3.实现通用的数组操作代码。
+4.利用Method对象以及FIeld和Annotation。
+首先想要明白反射，就需要了解Class对象是什么。在程序运行时，java运行时系
+统始终为所有对象维护一个被称为运行时的类型表示，这个信息跟踪着每个对象
+所属的类。可以应用专门的java类来访问这些信息。这些信息就保存在class对象
+里。class对象就是Class类中的一个对象。通过class对象可以调用Class类中的
+方法，实现获取程序运行时对象的信息。比如这个对象的方法，属性，以及注解。
+获取一个对象的class对象有三种方法（我们用Person类来举例）。
+首先实例化这个类获取对象。
+Person person=new Person();
+第一种：Class cls=Class.forName("");//利用类的全限定名来获取class对象。
+第二种：Class cls=person.getClass();//利用实例化对象的getClass方法
+第三种：Class cls=Person.class;//利用类名.class直接获取。
+在获取了类的class信息之后，我们就可以利用这个class对象来调用Class类中
+的各种方法来实现自己预期的功能。
+比如利用这个class对象，我们可以利用 newInstance方法来实例化一个同类对象。
+用这个方法进行实例化时，该类必须要有无参的构造方法，不然就会抛出一个异常。
+利用 forName和newInstance这两个方法，可以根据储存在字符串中的全限类名来
+创建一个对象。例如：
+String s= "java.util.Random";
+Object m = Class.forName(s).newInstance();
+当然如果希望通过类的名称来创建对象时，通常不会采用这种方法，因为这种方式
+进行实例化只限于有无参构造的类，所以在使用时大多采用Constructor类中的
+newInstance方法。这里的Constructor类可以通过class对象.getConstructor方法
+获取。不过尽管如此，在写类的时候还是推荐提供一个无参的构造方法。实际运用
+时，代码如下:
+Class cls=Person.class;
+Constructor con =cls.getConstructor(String name, int class);
+con.newInstance("Tom",20);
+这样便动态地实例化了一个对象。
+class对象既然可以获得构造方法，那么自然也可以获得类中的普通方法。在Class
+类中提供了getMethod方法，可以用来获得对象的指定方法，也可以用getMethods方
+法来获取全部的普通方法。我们知道，不管在任何时候，我们在调用类中的普通方法
+都需要有一个实例化对象。利用反射来调用普通方法的代码如下：
+Class cls=Class.forName("类的全限定名");
+Object obj=cls.newInstance();
+//获取setName这个方法的Method对象，并设置方法名称与参数。
+Method set= cls.getMethod("setName",String.class);
+//然后调用Method类中的invoke方法来利用实例化对象调用指定方法
+set.invoke（obj,"Tom");
+这里就相当于调用了对象中的setName方法。使用这个方式调用普通方法，打破了
+只能由指定类对象调用自己的方法的界限，而可以直接使用Object类直接调用所有
+的类中的普通方法。
+利用反射同样可以获取类中的属性，这里和方法一样，一个类只有在实例化之后才会
+为属性开辟空间。所以在操作属性之前也是需要进行实例化的。这里只需要直接调用
+newInstance方法来实例化即可。
+同样的在Class类中也提供了getField与getFields方法。但是，我们知道发生继承
+关系的类，子类会有父类的属性。所以这两种方法会获取父类中的属性。而在
+实际运用中，父类的属性通常会进行封装，所以没必要去关注父类的属性，所以
+Class类中提供了getDeclaredField和getDeclareFields两种方法用来只获取本类
+中的属性。代码如下：
+Class cls=Class.forName("类的全限定名");
+//获取全部属性是放在数组中保存的，所以我们需要数组来接收。
+Field[] fields=cls.getDeclaredFields();
+for(Field f:fields){
+System.out.println(f);
+}
+在Field类中也为属性的操作提供了方法。
+Object obj=cls.newInstance();
+Field name=cls.getDreclaredField("name");
+name.set(obj,"Tom");//将对象的name属性设置为Tom;
+System.out.println(name.getType());//获取属性的类型信息。
