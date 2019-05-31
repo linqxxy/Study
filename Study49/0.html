@@ -1,0 +1,73 @@
+
+<html>
+    <head>
+	    <title> hello World </title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+	<h1>标题1</h1>
+	<h2>标题2</h2>
+	<h3>标题3</h3>
+	<h4>标题4</h4>
+	<h5>标题5</h5>
+	<hr/>
+	<address>陕西省西安市 </address>
+	<code> public static void main(){}</code>
+	<p>床前明月光</p>
+	<p>疑是地上霜</p>
+	<marquee behavior="alternate" loop='2' scrollamount='25' direction='right' bgcolor="pink"> 一天不挨打，上房去揭瓦 </marquee>
+	<blockquote> 引用标签 </blockquote>
+	<font color="blue" size ="4">字体标签</font><br />
+	<strong>今天天气不错！</strong><br />
+	<em>今天天气不错！</em><br />
+	X<sup>2</sup><br />
+	H<sub>2</sub>O<br />
+	<pre>
+	func(){
+	}
+	</pre>
+	<ul type="square">
+	<li>唱</li>
+	<li>跳</li>
+	<li>rap</li>
+	<li>篮球</li>
+	</ul>
+	<ol>
+	<li>唱</li>
+	<li>跳</li>
+	<li>rap</li>
+	<li>篮球</li>
+	</ol>
+	<div> div1 </div>
+	<div> div2 </div>
+	<span> span </span><br />
+	<dl>
+		<dt>攻城狮</dt>
+		<dd>程序猿1</dd>
+		<dd>程序猿2</dd>
+	</dl>
+<script>
+//2):事件监听器（一个函数）
+function showImg(){
+	//js:DOM:document Object Model:文档对象模型编程
+	//1）获取img标签对象:id="img1"
+	var img = document.getElementById("img1") ;
+	//操作img标签对象style属性
+	img.style.display="block" ;
+}
+
+function hideImg(){
+	//1）获取img标签对象:id="img1"
+	var img = document.getElementById("img1") ;
+	img.style.display="none" ;
+	
+}
+</script>
+	<input type="button" value="显示" onclick="showImg()" />
+	<input type="button" value="隐藏" onclick="hideImg()" />
+	<img id="img1" src="img/321.jpg"
+	 width="100%" style="display: none;" />	
+	
+	<input type ="button" value="注册">
+	</body>
+</html>
