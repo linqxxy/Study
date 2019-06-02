@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css选择器</title>
+    <style>
+        div{
+            font-size: 35px;
+            color: aqua;
+        }
+        .cl1{
+            font-size: 26px;
+            color: #8cff52;
+        }
+        #dl2{
+            font-size: 30px;
+            color: #4b53ff;
+        }
+        #dl2,.cl1{
+            font-size: 30px;
+            color: darkmagenta;
+        }
+        #dl2 span{
+            font-size: 40px;
+            color: crimson;
+        }
+    </style>
+</head>
+<!--css基本选择器：3个-->
+<!--id选择器优先选择-->
+<!--class 选择器-->
+<!--id>class>element-->
+<!--（标签）element选择器-->
+<!--其他选择器：交集选择器（子元素选择器）-->
+<!--并集选择器 选择器1，选择器2,...{   }-->
+<!--通配符选择器-->
+<!--特殊：（伪类选择器）-->
+<body>
+<div class="cl1" id="dl1">div1</div>
+<div class="cl1" id="dl2"><span>div2</span></div>
+<div id="dl3">div3</div>
+</body>
+</html>

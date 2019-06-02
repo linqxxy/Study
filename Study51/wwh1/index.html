@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单标签</title>
+</head>
+<!--action-->
+<!--methon-->
+<!--js事件 submit-->
+<!--get 提交方式：-->
+    <!--1) 将用户消息提交到地址栏-->
+    <!--2)get提交的数据大小有限（不超过4kb）-->
+    <!--3)get方式不适合提交敏感数据（密码）-->
+    <!--需要提交密码：（1）md5加密 （2）JavaEE中SpringSecurity ：spring的安全框架-->
+<!--post 提交方式：-->
+    <!--1)数据不会提交到地址栏-->
+    <!--2)提交数据大小没有限制-->
+    <!--3)适合敏感数据（密码需要特定加密）-->
+<body>
+    <form action="#" method="post" onsubmit="return checkAll">
+        用户名：<input type="text" name="username"><br />
+        密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="pwd"><br />
+        <input type="submit" value="提交" />
+    </form>
+</body>
+</html>

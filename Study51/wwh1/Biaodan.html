@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单分类</title>
+</head>
+<!--常用的：-->
+    <!--input标签-->
+    <!--1）type="text":文本输入框-->
+    <!--2）type="password"密码-->
+    <!--3）type="radio"单选框-->
+    <!--4）type="checkbox"-->
+    <!--5）type="date" 事件-->
+    <!--6）type="tel" 电话-->
+    <!--7）type="file" 文件上传-->
+    <!--8）type="button" 普通按钮 必须指定value-->
+    <!--9）type="submit" 提交-->
+    <!--10）type="reset" 重置-->
+    <!--11）type="hidden" 隐藏域-->
+    <!--select标签-->
+    <!--下拉菜单-->
+    <!--option ：下拉菜单（应用场景：省市联动）-->
+    <!--textarea 文本域 运用场景（个人自我描述）-->
+<body>
+<form action="#" method="get" >
+    用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input type="text" name="username" placeholder="请输入用户名"><br/>
+    密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="psw" placeholder="请输入密码"><br/>
+    性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input type="radio" value="男" name="gender">男
+          <input type="radio" value="女" name="gender">女<br/>
+    爱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好：<input type="checkbox" value="唱" name="hobby">唱
+          <input type="checkbox" value="跳" name="hobby">跳
+          <input type="checkbox" value="rap" name="hobby">rap<br />
+    生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input type="date" name="date"><br />
+    联系电话：<input type="tel" name="联系电话"><br />
+    上传图片：<input type="file" name="photo"><br />
+    自我介绍：<textarea rows="5" cols="20">我是练习时长两年半的个人练习生</textarea><br />
+    地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：<select name="address">
+        <option value="请选择">请选择</option>
+        <option value="陕西省">陕西省</option>
+        <option value="山西省">山西省</option>
+        <option value="四川省">四川省</option>
+        <option value="湖北省">湖北省</option>
+    </select><br />
+    <input type="button" value="普通按钮"><br/>
+    <input type="reset" value="重置">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" value="提交"><br/>
+
+</form>
+</body>
+</html>
