@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>window</title>
+</head>
+<script>
+    /**
+     *
+     */
+    function testWindowOpen() {
+    open("demo.html","_blank","width:500px;height:400px")
+    }
+    function testInterval() {
+        setInterval("testWindowOpen()",3000)
+    }
+    function clearTaskId() {
+        window.clearTaskId()
+    }
+    function testClearInterval() {
+        window.clearInterval(clearTaskId())
+    }
+    function testConfirm() {
+        var flag=window.confirm("确认删除吗")
+        if(flag){
+            alert("删除中")
+        }else {
+            alert("取消删除")
+        }
+    }
+
+    /**
+     * 事件编程三要素
+     * 1.事件源（标签）
+     * 2.事件监听器（填写的函数）
+     * 3注册事件监听器（在标签中使用特定的属性和函数进行绑定）
+     */
+</script>
+<body>
+<input type="button" value="testOpen" onclick="testWindowOpen()">
+<br/>
+<input type="button" value="testInterval" onclick="testInterval()">
+<ba/>
+<input type="button" value="testClearInterval" onclick="testConfirm()">
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TestUtil</title>
+</head>
+<script src="ArrayUtil.js"></script>
+<script>
+    var arr=[10,78,39,20,1];
+    var au=new ArrayUtil();
+    var  index=au.search(arr,78)
+    document.write("当前元素索引是"+index+"<br/>")
+    var max=au.max(arr)
+    document.write("最大值是"+max+"<br/>")
+    Array.prototype.search=function (target) {
+        for(var i=0;i<this.length;i++){
+            if(this[i]==target){
+                return i;
+            }
+        }
+        return -1;
+    }
+    Array.prototype.max=function(){
+        var max=this[0];
+        for(var i=0;i<this.length;i++){
+            if(this[i]>max){
+                max=this[i];
+            }
+        }
+        return max;
+    }
+    document.write("目标索引是"+arr.search(39)+"<br/>")
+    document.write("最大值是"+arr.max()+"<br/>")
+</script>
+<body>
+</body>
+</html>
