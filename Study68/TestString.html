@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TestString</title>
+</head>
+<script>
+    var  Str1=new String("Hello")
+    //创建了两个对象
+    //方法区字符串常量池
+    var  Str2=new String("Hello")
+    document.write((Str1==Str2)+"<br/>");
+    document.write((Str1.valueOf()==Str2.valueOf())+"<br/>")
+    //方法2
+    var str3="hello"
+    var str4="hello"
+    document.write((str3==str4)+"<br/>");
+    /**
+     * 关于String对象的内置对象
+     * charAt(var index):
+     * indexOf(var str):查询当前子串中第一次出现的索引
+     * lastIndexOf():查询当前子串在大串中最后一次出现的索引
+     * fontColor（var str）：给字符串进行颜色标记
+     * subString(var strat,var end):从指定位置开始截取到指定位置
+     * subStr（var Startn,var length）:从指定位置截取指定长度
+     * split(var str)：字符串分割，返回字符串数组
+     */
+    var str="helloworld"
+    document.write(str.indexOf("o")+"<br/>")
+    document.write(str.charAt(3)+"<br/>")
+    document.write(str.lastIndexOf("o")+"<br/>")
+    document.write(str.fontcolor("#ff6afe")+"<br/>")
+    var s="PHP-java-c++-javaScript"
+    var strArray=s.split("-")
+    for(var i=0;i<strArray.length;i++){
+        document.write(strArray[i]+"<br/>")
+    }
+</script>
+<body>
+
+</body>
+</html>

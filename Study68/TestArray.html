@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TestArray</title>
+</head>
+<script>
+    var arr=new Array();
+    alert(arr.length);
+    arr[0]=10;
+    arr[1]=20;
+    arr[2]=30;
+    /**
+     *
+     */
+    alert(arr.length)
+    arr[3]="hello";
+    arr[4]=true;
+    arr[6]=new Object();
+    //js静态初始化，直接指定具体元素值
+    var arr1=[10,20,30,true,new Object(),"hello"]
+    var arr2=["javaEE","Hadoop","Python","R"]
+    arr2.reverse();
+    for (var i=0;i<arr2.length;i++){
+        document.write(arr2[i]+"<br/>");
+    }
+    document.write("<hr/>")
+    /**
+     * 常用的方法
+     * join（var str）：通过特定的分隔符str将数组元素拼接成字符串
+     * reverse():字符串反转功能
+     */
+    alert(arr.length)
+</script>
+<body>
+
+</body>
+</html>
