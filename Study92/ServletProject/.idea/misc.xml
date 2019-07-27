@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Servlet_cookie/pom.xml" />
+        <option value="$PROJECT_DIR$/servlet_session/pom.xml" />
+        <option value="$PROJECT_DIR$/Jstl_E/pom.xml" />
+        <option value="$PROJECT_DIR$/jstl/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Servlet_cookie/jstl/pom.xml" />
+        <option value="$PROJECT_DIR$/Servlet_cookie/jstl_el/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
