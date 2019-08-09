@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linqxxy.mapper.UserMapper">
+        <resultMap id="queryUserToOrders" type="com.linqxxy.po.User">
+            <id column="id" property="id"/>
+            <result column="username" property="username"/>
+            <result column="birthday" property="birthday"/>
+            <result column="sex" property="sex"/>
+            <result column="address" property="address"/>
+            <!--定义orders和user之间的关系 1:1-->
+            <collection property="ordersList" ofType="com.linqxxy.po.Orders">
+                <id column="id" property="user_id"/>
+                <result column="id" property="id"/>
+                <result column="number" property="number"/>
+                <result column="createtime" property="createtime"/>
+            </collection>
+        </resultMap>
+        <select id="queryUserToOrders" resultMap="queryUserToOrders">
+          select
+            user.*,
+            orders.id,
+            orders.number,
+            orders.createtime
+        from
+            user,orders
+        where
+            user.id=orders.user_id;
+    </select>
+    <resultMap id="userToOrderdetailResultMap" type="com.linqxxy.po.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+        <collection property="ordersList" ofType="com.linqxxy.po.Orders">
+            <id column="id" property="user_id"/>
+            <result column="id" property="id"/>
+            <result column="number" property="number"/>
+            <result column="createtime" property="createtime"/>
+            <collection property="orderdetailList" ofType="com.linqxxy.po.Orderdetail">
+                <id column="id" property="ordersId"/>
+                <result column="orderdetail_id" property="id"/>
+                <result column="items_id" property="itemsId"/>
+                <result column="items_num" property="itemsNum"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="queryUserToOrderdetail" resultMap="userToOrderdetailResultMap">
+         select
+            user.*,
+            orders.id,
+            orders.number,
+            orders.createtime,
+            orderdetail.id as orderdetail_id,
+            orderdetail.items_id,
+            orderdetail.items_num
+        from
+            user,orders,orderdetail
+        where
+            user.id=orders.user_id
+		and
+			orders.id=orderdetail.orders_id;
+    </select>
+    <resultMap id="UserToItemsResultMap" type="com.linqxxy.po.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+        <collection property="ordersList" ofType="com.linqxxy.po.Orders">
+            <id column="id" property="user_id"/>
+            <result column="id" property="id"/>
+            <result column="number" property="number"/>
+            <result column="createtime" property="createtime"/>
+            <collection property="orderdetailList" ofType="com.linqxxy.po.Orderdetail">
+                <id column="orderdetail_id" property="id"/>
+                <result column="items_id" property="itemsId"/>
+                <result column="items_num" property="itemsNum"/>
+                <result column="orders_id" property="ordersId"/>
+                <association property="items" javaType="com.linqxxy.po.Items">
+                    <id column="id" property="items_id"/>
+                    <result column="id" property="items_id"/>
+                    <result column="name" property="name"/>
+                    <result column="price" property="price"/>
+                </association>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="queryUserToItems" resultMap="UserToItemsResultMap">
+        select
+			user.*,
+			orders.id as orders_ID,
+			orders.number,
+			orders.createtime,
+            orderdetail.id as orderdetail_id,
+            orderdetail.items_id,
+            orderdetail.items_num,
+            orderdetail.orders_id,
+            items.id,
+            items.name,
+            items.price
+		from
+			user,
+			orders,
+            orderdetail,
+            items
+		where
+			user.id = orders.user_id
+		and
+			orderdetail.orders_id=orders.id
+		and
+			items.id=orderdetail.items_id;
+
+
+    </select>
+
+    <sql id="linqxxySql1">
+        <if test="userEx != null">
+            <if test="userEx.sex != null">
+                and user.sex = #{userEx.sex}
+            </if>
+            <if test="userEx.username != null">
+                and user.username like '%${userEx.username}%'
+            </if>
+        </if>
+    </sql>
+
+    <sql id="linqxxySql2">
+        <foreach collection="moreIds" item="everyId" open="and (" close=")" separator="or">
+            id=#{everyId}
+        </foreach>
+    </sql>
+
+
+    <sql id="linqxxySql3">
+        <foreach collection="moreIds" item="everyId" open="id between " close=";" separator="and">
+            #{everyId}
+        </foreach>
+    </sql>
+
+
+
+    <select id="queryUserZH" parameterType="com.linqxxy.bz.UserBz" resultType="com.linqxxy.po.UserEx">
+        select
+            *
+        from
+            user
+        <where>
+           <!-- <if test="userEx != null">
+                <if test="userEx.sex != null">
+                    and user.sex = #{userEx.sex}
+                </if>
+                <if test="userEx.username != null">
+                    and user.username like '%${userEx.username}%'
+                </if>
+            </if>-->
+           <include refid="linqxxySql1"/>
+        </where>
+    </select>
+
+    <select id="queryUserCount" parameterType="com.linqxxy.bz.UserBz" resultType="int">
+        select
+            count(*)
+        from
+            user
+        <where>
+            <!--<if test="userEx != null">
+                <if test="userEx.sex != null">
+                    and user.sex = #{userEx.sex}
+                </if>
+                <if test="userEx.username != null">
+                    and user.username like '%${userEx.username}%'
+                </if>
+            </if>-->
+            <include refid="linqxxySql1"/>
+        </where>
+    </select>
+
+    <select id="queryUserByMoreIds" parameterType="com.linqxxy.bz.UserBz" resultType="com.linqxxy.po.UserEx">
+        select
+            *
+        from
+            user
+        <where>
+            <!--<foreach collection="moreIds" item="everyId" open="and (" close=")" separator="or">
+                id=#{everyId}
+            </foreach>-->
+
+
+            <include refid="linqxxySql3"/>
+        </where>
+    </select>
+
+</mapper>

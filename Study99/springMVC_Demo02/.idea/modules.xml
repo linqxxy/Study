@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../mybatios_demo/mybatios_demo.iml" filepath="$PROJECT_DIR$/../mybatios_demo/mybatios_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mybatisSql/mybatisSql.iml" filepath="$PROJECT_DIR$/../mybatisSql/mybatisSql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../springMVC/springMVC.iml" filepath="$PROJECT_DIR$/../springMVC/springMVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC_JDBC2.iml" filepath="$PROJECT_DIR$/springMVC_JDBC2.iml" />
+    </modules>
+  </component>
+</project>

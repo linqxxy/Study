@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linqxxy.mapper.OrderMapper">
+
+    <resultMap id="queryUserToOrders" type="com.linqxxy.po.User">
+        <!--定义orders的信息-->
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="birthday" property="birthday"/>
+        <result column="address" property="address"/>
+        <result column="note" property="note"/>
+        <!--定义orders和user之间的关系 1:1-->
+        <association property="queryUserToOrders" javaType="com.linqxxy.po.Orders">
+            <id column="id" property="user_id"/>
+            <result column="id" property="id"/>
+            <result column="number" property="number"/>
+            <result column="createtime" property="createtime"/>
+        </association>
+    </resultMap>
+    <select id="queryUserToOrders" resultMap="queryUserToOrders">
+          select
+            user.*,
+            orders.id,
+            orders.number,
+            orders.createtime
+        from
+            user,orders
+        where
+            user.id=orders.user_id;
+    </select>
+
+</mapper>
