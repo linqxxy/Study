@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linqxxy.mapper.UserMapper">
+
+
+
+    <select id="queryUserById" parameterType="java.lang.Integer" resultType="com.linqxxy.po.User">
+        select * from user where id=#{value}
+    </select>
+
+    <update id="modifyUser" parameterType="com.linqxxy.po.User">
+        update user set
+            usernmae = #{username,jdbcType=VARCHAR},
+            birthday = #{birthday,jdbcType=TIMESTAMP},
+            sex = #{sex,jdbcType=CHAR},
+            address = #{address,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <insert id="insertUser" parameterType="com.linqxxy.po.User">
+        insert into user (id,username,birthday,sex,address) value (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP},#{sex,jdbcType=CHAR},#{address,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteUserById" parameterType="java.lang.Integer">
+        delete from user where id=#{id,jdbcType=INTEGER}
+    </delete>
+
+</mapper>
